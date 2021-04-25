@@ -10,18 +10,21 @@ import (
 func main() {
 	chain := blockchain.InitBlockChain()
 
-	chain.AddBlock("Fist block affter Genesis")
-	chain.AddBlock("Second block affter Genesis")
-	chain.AddBlock("Third block affter Genesis")
+	chain.AddBlock("First Block after Genesis")
+	chain.AddBlock("Second Block after Genesis")
+	chain.AddBlock("Third Block after Genesis")
+	chain.AddBlock("Four Block after Genesis")
 
 	for _, block := range chain.Blocks {
-		fmt.Printf("Previous hash: %x\n", block.PrevHash)
-		fmt.Printf("Current hash: %x\n", block.Hash)
-		fmt.Printf("Data block: %s\n", block.Data)
+
+		fmt.Printf("Previous Hash: %x\n", block.PrevHash)
+		fmt.Printf("Data in Block: %s\n", block.Data)
+		fmt.Printf("Hash: %x\n", block.Hash)
 
 		pow := blockchain.NewProof(block)
-
 		fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
 		fmt.Println()
+
 	}
+
 }
